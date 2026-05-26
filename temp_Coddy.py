@@ -1,8 +1,3 @@
-text = "abcdeabc"
-pattern = "abc"
+consonants = "bcdfghjklmnpqrstvwxyz".split()
 
-for i in range(len(text)):
-    if text[i:i + len(pattern)] == pattern:
-        print(pattern)
-
-    
+print(consonants)
