@@ -181,3 +181,29 @@ def edit_contact(contact_book: dict):
 
         print("Contact updated successfully!")
 
+
+"""
+The next step is to create the delete_contact function.
+This function will allow users to remove a specific contact from the Contact Book.
+
+Your Task:
+Create a function named delete_contact that takes one argument:
+contact_book (a dictionary).
+Get input for the contact's name that the user wants to delete.
+Check if the name exists in the contact_book:
+If it exists, remove the contact from the dictionary.
+Print: "Contact deleted successfully!".
+If the contact does not exist, print: "Contact not found!".
+"""
+
+def delete_contact(contact_book: dict):
+    contact_to_delete = input()
+
+    if contact_to_delete not in contact_book:
+        print("Contact not found!")
+        return
+    
+    elif contact_to_delete in contact_book:
+        del contact_book[contact_to_delete]
+        print("Contact deleted successfully!")
+
