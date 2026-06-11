@@ -30,3 +30,13 @@ print(city)
 # Output: 'New York'
 print(my_dict)
 # Output: {'name': 'Alice', 'age': 30}
+
+# del dict[key] - removes the key and its values 
+def delete_contact(contact_book):
+    name = input()
+    if name in contact_book:
+        del contact_book[name]
+        print("Contact deleted successfully!")
+    else:
+        print("Contact not found!")
+
