@@ -161,23 +161,22 @@ def edit_contact(contact_book: dict):
         print("Contact not found!")
         return
 
-    elif contact_to_edit in contact_book:
-        contact = contact_book[contact_to_edit]
+    contact = contact_book[contact_to_edit]
 
-        new_phone = input()
-        new_email = input()
-        new_address = input()
-        
-        if new_phone:   # if new_phone == "" --> False, podmínka se neprovede
-            contact["phone"] = new_phone
+    new_phone = input()
+    new_email = input()
+    new_address = input()
+    
+    if new_phone:   # if new_phone == "" --> False, podmínka se neprovede
+        contact["phone"] = new_phone
 
-        if new_email:
-            contact["email"] = new_email   
+    if new_email:
+        contact["email"] = new_email   
 
-        if new_address:
-            contact["address"] = new_address
+    if new_address:
+        contact["address"] = new_address
 
-        print("Contact updated successfully!")
+    print("Contact updated successfully!")
 
 
 """
@@ -201,9 +200,8 @@ def delete_contact(contact_book: dict):
         print("Contact not found!")
         return
     
-    elif contact_to_delete in contact_book:
-        del contact_book[contact_to_delete]
-        print("Contact deleted successfully!")
+    del contact_book[contact_to_delete]
+    print("Contact deleted successfully!")
 
 """
 The next step is to create the list_all_contacts function.
