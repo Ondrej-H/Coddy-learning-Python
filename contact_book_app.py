@@ -111,4 +111,73 @@ def view_contact(contact_book):
         print("Contact not found!")
 
 
+"""
+The next step is to create the edit_contact function.
+This function will allow users to update the details of
+an existing contact in the Contact Book.
+
+Your Task:
+Create a function named edit_contact that takes one argument:
+contact_book (a dictionary).
+Get input for the contact's name that the user wants to edit.
+Check if the name exists in the contact_book:
+If it exists, prompt the user to input new values for the contact's phone, email,
+and address (in that order!).
+If the user provides no input (presses Enter), keep the current value for
+that field (in this case the input will be an empty string, '').
+Update the contact's information in the dictionary.
+Print: "Contact updated successfully!".
+If the contact does not exist, print: "Contact not found!".
+
+Remember: Only read inputs for phone, email, and address if the contact exists
+in the contact book. If the contact is not found, print the error
+message immediately without trying to read additional inputs.
+
+Expected Behavior:
+For a contact_book containing:
+
+{"Alice": {"phone": "123-456-7890", "email": "alice@example.com", 
+"address": "123 Main St"}}
+If the user enters:
+
+Alice
+987-654-3210
+
+456 Elm St
+The updated contact_book should look like this:
+
+{"Alice": {"phone": "987-654-3210", "email": "alice@example.com",
+"address": "456 Elm St"}}
+If the user enters a name that does not exist:
+
+Bob
+The output should be:
+
+Contact not found!
+"""
+
+def edit_contact(contact_book: dict):
+    contact_to_edit = input()
+    
+    if contact_to_edit not in contact_book:
+        print("Contact not found!")
+        return
+
+    elif contact_to_edit in contact_book:
+        contact = contact_book[contact_to_edit]
+
+        new_phone = input()
+        new_email = input()
+        new_address = input()
         
+        if new_phone:   # if new_phone == "" --> False, podmínka se neprovede
+            contact["phone"] = new_phone
+
+        if new_email:
+            contact["email"] = new_email   
+
+        if new_address:
+            contact["address"] = new_address
+
+        print("Contact updated successfully!")
+
