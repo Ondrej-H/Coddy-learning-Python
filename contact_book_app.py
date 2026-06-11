@@ -65,4 +65,50 @@ def add_contact(contact_book):
 
         print("Contact added successfully!")
 
+    
+"""
+Create a function named view_contact that displays details of a specific contact.
+
+Your function should:
+
+Take a contact book dictionary as a parameter
+Get a contact name from user input (using input())
+Display the contact's details if found
+Print "Contact not found!" if the contact doesn't exist
+When displaying a contact, use this exact format:
+
+Name: [name]
+Phone: [phone]
+Email: [email]
+Address: [address]
+
+Example:
+If the contact book contains Alice's information and the user enters "Alice", output:
+
+Name: Alice
+Phone: 123-456-7890
+Email: alice@example.com
+Address: 123 Main St
+If the user enters "Bob" (who doesn't exist), output:
+
+Contact not found!
+Note: Your function should only output the contact details or the error message
+ - no additional prompting text.
+"""
+
+def view_contact(contact_book):
+    contact_to_view = input()
+
+    if contact_to_view in contact_book:
+        contact = contact_book[contact_to_view]
+
+        print(f"Name: {contact_to_view}")
+        print(f"Phone: {contact['phone']}")
+        print(f"Email: {contact['email']}")
+        print(f"Address: {contact['address']}")
+        
+    else:
+        print("Contact not found!")
+
+
         
