@@ -63,16 +63,15 @@ def calculate_average_grade(name: str) -> float | None:
     if not grades:
         return 0
     
-    if grades:
-        total = 0
-        for num in grades:
-            total += num
-            average_grade = total / len(grades)
+    total = 0
+    for num in grades:
+        total += num
+        average_grade = total / len(grades)
 
-        return average_grade
+    return average_grade
 
 
-def list_students_by_course(course: str):
+def list_students_by_course(course: str) -> list[str]:
     list_of_students_in_course = []
     
     for student in student_records:
@@ -85,11 +84,27 @@ def list_students_by_course(course: str):
     return list_of_students_in_course
 
 
+def filter_top_students(threshold: float):
+    list_of_top_students = []
+
+    if student_records:
+
+        for student in student_records:
+            if calculate_average_grade(student) > threshold:
+                list_of_top_students.append(student)
+
+    return list_of_top_students
+
+            
+
 
 add_student("Alice", 20, ["Math", "Physics"])
 add_student("Bob", 22, ["Math", "Biology"])
 add_student("Diana", 23, ["Chemistry", "Physics"])
-print(list_students_by_course("Math"))  # Should return ["Alice", "Bob"]
-print(list_students_by_course("Physics"))  # Should return ["Alice", "Diana"]
-print(list_students_by_course("Biology"))  # Should return ["Bob"]
-print(list_students_by_course("History"))  # Should return an empty list
+add_grade("Alice", 90)
+add_grade("Alice", 85)
+add_grade("Bob", 75)
+add_grade("Diana", 95)
+print(filter_top_students(80))  # Should return ["Alice", "Diana"]
+print(filter_top_students(90))  # Should return ["Diana"]
+print(filter_top_students(100))  # Should return an empty list
