@@ -17,9 +17,9 @@ print(student_records)
 
 student_records = {}
 
-def add_student(name: str, age: int, courses: list[str]) -> None:
+def add_student(student_records: dict, name: str, age: int, courses: list[str]) -> None:
     if name in student_records:
-        print(f"Student {name} already exists.")
+        print(f"Student '{name}' already exists.")
         return
     
     student_records[name] = {
@@ -46,11 +46,7 @@ def is_enrolled(name: str, course: str) -> bool:
         print(f"Student '{name}' not found.")
         return False
     
-    if course in student_records[name]["courses"]:
-        return True
-    
-    if course not in student_records[name]["courses"]:
-        return False
+    return course in student_records[name]["courses"]
     
 
 def calculate_average_grade(name: str) -> float | None:
@@ -63,10 +59,7 @@ def calculate_average_grade(name: str) -> float | None:
     if not grades:
         return 0
     
-    total = 0
-    for num in grades:
-        total += num
-        average_grade = total / len(grades)
+    average_grade = sum(grades) / len(grades)
 
     return average_grade
 
@@ -76,31 +69,26 @@ def list_students_by_course(course: str) -> list[str]:
     
     for student in student_records:
 
-        for enrolled_course in student_records[student]["courses"]:
-    
-            if enrolled_course == course:
-                list_of_students_in_course.append(student)
+        if course in student_records[student]["courses"]:                
+            list_of_students_in_course.append(student)
         
     return list_of_students_in_course
 
 
-def filter_top_students(threshold: float):
+def filter_top_students(threshold: float) -> list[str]:
     list_of_top_students = []
 
-    if student_records:
-
-        for student in student_records:
-            if calculate_average_grade(student) > threshold:
-                list_of_top_students.append(student)
+    for student in student_records:
+        if calculate_average_grade(student) > threshold:
+            list_of_top_students.append(student)
 
     return list_of_top_students
 
             
 
-
-add_student("Alice", 20, ["Math", "Physics"])
-add_student("Bob", 22, ["Math", "Biology"])
-add_student("Diana", 23, ["Chemistry", "Physics"])
+add_student(student_records, "Alice", 20, ["Math", "Physics"])
+add_student(student_records, "Bob", 22, ["Math", "Biology"])
+add_student(student_records, "Diana", 23, ["Chemistry", "Physics"])
 add_grade("Alice", 90)
 add_grade("Alice", 85)
 add_grade("Bob", 75)
