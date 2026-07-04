@@ -53,7 +53,7 @@ def is_enrolled(name: str, course: str) -> bool:
         return False
     
 
-def calculate_average_grade(name: str):
+def calculate_average_grade(name: str) -> float | None:
     if name not in student_records:
         print(f"Student '{name}' not found.")
         return None
@@ -72,15 +72,24 @@ def calculate_average_grade(name: str):
         return average_grade
 
 
-def list_students_by_course
-
+def list_students_by_course(course: str):
+    list_of_students_in_course = []
     
+    for student in student_records:
+
+        for enrolled_course in student_records[student]["courses"]:
+    
+            if enrolled_course == course:
+                list_of_students_in_course.append(student)
+        
+    return list_of_students_in_course
+
+
+
 add_student("Alice", 20, ["Math", "Physics"])
-add_student("Bob", 22, ["Biology", "Chemistry"])
-add_grade("Alice", 90)
-add_grade("Alice", 85)
-add_grade("Bob", 75)
-print(calculate_average_grade("Alice"))  # Should return 87.5
-print(calculate_average_grade("Bob"))  # Should return 75.0
-print(calculate_average_grade("Charlie"))  # Non-existent student, should print message and return None
-print(calculate_average_grade("Alice"))  # Should return 87.5 again
+add_student("Bob", 22, ["Math", "Biology"])
+add_student("Diana", 23, ["Chemistry", "Physics"])
+print(list_students_by_course("Math"))  # Should return ["Alice", "Bob"]
+print(list_students_by_course("Physics"))  # Should return ["Alice", "Diana"]
+print(list_students_by_course("Biology"))  # Should return ["Bob"]
+print(list_students_by_course("History"))  # Should return an empty list
