@@ -1,4 +1,4 @@
-def elements_of_freedom(elements: list[str]):
+def elements_of_freedom(elements: list[str]) -> list[str]:
     # Your solution here
     
     # Step 1: Filter elements with length >= 5
@@ -20,7 +20,7 @@ def elements_of_freedom(elements: list[str]):
     return unique_elements
 
 
-input = ["apple", "banana", "cherry", "date", "apple", "banana", "grape", "fig"]
+"""input = ["apple", "banana", "cherry", "date", "apple", "banana", "grape", "fig"]
 '''Output: ['APPLE', 'BANANA', 'CHERRY', 'GRAPE']'''
 
-print(elements_of_freedom(input))
+print(elements_of_freedom(input))"""
